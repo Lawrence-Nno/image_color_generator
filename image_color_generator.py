@@ -11,6 +11,16 @@ import os
 import glob
 
 
+app = Flask(__name__)
+app.secret_key = os.getenv('SECRET_KEY', '')
+app.config['UPLOAD_FOLDER'] = 'static/uploads/'
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
+
+image_path = 'static/uploads/'
+jinja_image_path = 'uploads/'
+
+
 def process_image(img):
     """
     This function processes an image and returns 5 major colors in the image alongside the rgb codes
@@ -71,16 +81,6 @@ def allowed_file(filename):
 
 
 ALLOWED_EXTENSIONS = ['blp', 'bmp', 'dib', 'bufr', 'cur', 'pcx', 'dcx', 'dds', 'ps', 'eps', 'fit', 'fits', 'fli', 'flc', 'ftc', 'ftu', 'gbr', 'gif', 'grib', 'h5', 'hdf', 'png', 'apng', 'jp2', 'j2k', 'jpc', 'jpf', 'jpx', 'j2c', 'icns', 'ico', 'im', 'iim', 'jfif', 'jpe', 'jpg', 'jpeg', 'mpg', 'mpeg', 'tif', 'tiff', 'mpo', 'msp', 'palm', 'pcd', 'pdf', 'pxr', 'pbm', 'pgm', 'ppm', 'pnm', 'pfm', 'psd', 'qoi', 'bw', 'rgb', 'rgba', 'sgi', 'ras', 'tga', 'icb', 'vda', 'vst', 'webp', 'wmf', 'emf', 'xbm', 'xpm']
-
-
-app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY', '')
-app.config['UPLOAD_FOLDER'] = 'static/uploads/'
-if not os.path.exists(app.config['UPLOAD_FOLDER']):
-    os.makedirs(app.config['UPLOAD_FOLDER'])
-
-image_path = 'static/uploads/'
-jinja_image_path = 'uploads/'
 
 
 class UploadForm(FlaskForm):
