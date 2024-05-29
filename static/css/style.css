@@ -1,0 +1,83 @@
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 300 to 800
+
+.open-sans-<uniquifier> {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+body{
+    font-family: "Open Sans", sans-serif;
+}
+h1{
+    color: green;
+    font-weight: 800;
+    margin-top: 1rem;
+}
+h3{
+    color: #A34343;
+    font-weight: 600;
+}
+.to-see{
+    margin: 1rem 0;
+    color: #D20062;
+}
+.rgb-codes-text{
+    font-weight: 700;
+    color: #A34343;
+    font-size: 1rem;
+}
+.rgb-codes{
+    color: green;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+.choose-file{
+    display: inline-block;
+}
+input[type="file"] {
+  color: green;
+}
+input::file-selector-button{
+  color: green !important;
+}
+.form-class{
+    margin-bottom: 1rem;
+}
+.colors img{
+    object-fit: contain;
+}
+.uploaded-image img{
+    object-fit: contain;
+    height: 400px;
+    width: 800px;
+}
+
+@media (max-width: 1100px) {
+  .colors img{
+    width: 100%;
+    height: 100%
+    object-fit: contain;
+}
+.uploaded-image img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+.rgb-codes{
+    color: green;
+    font-weight: 500;
+    font-size: 0.8rem;
+}
+div .choose-file{
+    display: inline-block !important;
+    margin-bottom: 0.5rem;
+}
+.size{
+    font-size: 0.8rem;
+}
+}
