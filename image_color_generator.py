@@ -12,7 +12,7 @@ import glob
 
 
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY', '')
+app.secret_key = os.environ.get('SECRET_KEY')
 app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
