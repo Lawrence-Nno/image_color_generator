@@ -12,29 +12,36 @@
 
 body{
     font-family: "Open Sans", sans-serif;
+    background-color: #F1E5D1;
 }
 h1{
-    color: green;
+    color: #808836;
     font-weight: 800;
     margin-top: 1rem;
 }
 h3{
-    color: #A34343;
+    color: #FF9A00;
     font-weight: 600;
 }
 .to-see{
     margin: 1rem 0;
-    color: #D20062;
+    color: #D10363;
+}
+.flashm{
+    width: 50%;
+    margin: auto;
 }
 .rgb-codes-text{
     font-weight: 700;
-    color: #A34343;
+    color: #D10363;
     font-size: 1rem;
 }
 .rgb-codes{
-    color: green;
-    font-weight: 500;
+    color: black;
+    font-weight: 600;
     font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-style: italic;
 }
 .choose-file{
     display: inline-block;
@@ -50,11 +57,13 @@ input::file-selector-button{
 }
 .colors img{
     object-fit: contain;
+    margin-bottom: 1rem;
 }
 .uploaded-image img{
     object-fit: contain;
     height: 400px;
     width: 800px;
+    margin-bottom: 1rem;
 }
 
 @media (max-width: 1100px) {
@@ -67,11 +76,13 @@ input::file-selector-button{
     object-fit: contain;
     height: 100%;
     width: 100%;
+    margin-bottom: 1rem;
 }
 .rgb-codes{
     color: green;
     font-weight: 500;
     font-size: 0.8rem;
+    margin-bottom: 1rem;
 }
 div .choose-file{
     display: inline-block !important;
@@ -79,5 +90,9 @@ div .choose-file{
 }
 .size{
     font-size: 0.8rem;
+}
+.flashm{
+    width: 100%;
+    margin: auto;
 }
 }
