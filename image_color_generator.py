@@ -27,15 +27,18 @@ def process_image(img):
     :param img:
     :return: A list containing the major colors and the codes
     """
-    # Load the image using Pillow
-    img_path = img
-    image = Image.open(img_path)
-
-    # Convert the image to an RGB format
-    image = image.convert('RGB')
-
-    # Convert the image to a NumPy array
-    image_np = np.array(image)
+    # # Load the image using Pillow
+    # img_path = img
+    # image = Image.open(img_path)
+    #
+    # # Convert the image to an RGB format
+    # image = image.convert('RGB')
+    #
+    # # Convert the image to a NumPy array
+    # image_np = np.array(image)
+    with Image.open(img) as image:
+        image = image.convert('RGB')
+        image_np = np.array(image)
 
     # Reshape the image array to a 2D array where each row is a pixel
     pixels = image_np.reshape(-1, 3)
@@ -95,7 +98,7 @@ def index():
         # A list of the files in the uploaded image folder
         last_uploaded_image = glob.glob(os.path.join('static/uploads/', '*'))
         if last_uploaded_image:
-            if os.path.getsize(last_uploaded_image[-1]) > 450000:
+            if os.path.getsize(last_uploaded_image[-1]) > 200000:
                 os.remove(last_uploaded_image[-1])
                 flash("Image should not exceed 450kb")
                 return redirect(url_for('index'))
