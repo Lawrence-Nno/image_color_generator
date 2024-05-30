@@ -62,7 +62,7 @@ def process_image(img):
     plt.axis('off')
     # plt.show()
     # Save the matplotlib figure to a folder
-    plt.savefig('static/processed_image/fig.png')
+    plt.savefig('static/processed_image/fig.png', bbox_inches='tight', pad_inches=0)
     processed_image_path = 'static/processed_image/fig.png'
     image_codes = palette
     # Returns a list of the image path and the color codes
@@ -98,10 +98,6 @@ def index():
         # A list of the files in the uploaded image folder
         last_uploaded_image = glob.glob(os.path.join('static/uploads/', '*'))
         if last_uploaded_image:
-            if os.path.getsize(last_uploaded_image[-1]) > 200000:
-                os.remove(last_uploaded_image[-1])
-                flash("Image should not exceed 450kb")
-                return redirect(url_for('index'))
             # Deletes the first item of the list since we are sure is only one item in the list
             os.remove(last_uploaded_image[0])
 
@@ -109,7 +105,8 @@ def index():
         file = form.file.data
         if file and allowed_file(file.filename):
             # Used secure_filename function from werkzeug package to secure the file and avoid attacks
-            original_filename = secure_filename(file.filename)
+            # original_filename = secure_filename(file.filename)
+            secure_filename(file.filename)
 
             # # This line uses the rsplit method to get the file extension but I didn't later use in my program
             # file_extension = original_filename.rsplit('.', 1)[1]
@@ -121,6 +118,13 @@ def index():
             file_path = os.path.join('static/uploads/', new_filename)
             # saves the file
             file.save(file_path)
+
+            # This barrier is to prevent overloading of the server, it won't exist if your server is big enough
+            if os.path.getsize('static/uploads/uploaded_image.png') > 200000:
+                print(f"size: {os.path.getsize('static/uploads/uploaded_image.png')}")
+                os.remove('static/uploads/uploaded_image.png')
+                flash("Image should not exceed 200kb")
+                return redirect(url_for('index'))
 
             # passes the file to the process_image function
             processed = process_image(file)
@@ -134,5 +138,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(debug=True)
 
