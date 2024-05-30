@@ -95,6 +95,10 @@ def index():
         # A list of the files in the uploaded image folder
         last_uploaded_image = glob.glob(os.path.join('static/uploads/', '*'))
         if last_uploaded_image:
+            if os.path.getsize(last_uploaded_image[-1]) > 450000:
+                os.remove(last_uploaded_image[-1])
+                flash("Image should not exceed 450kb")
+                return redirect(url_for('index'))
             # Deletes the first item of the list since we are sure is only one item in the list
             os.remove(last_uploaded_image[0])
 
