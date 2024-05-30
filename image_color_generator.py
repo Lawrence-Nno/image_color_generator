@@ -121,7 +121,6 @@ def index():
 
             # This barrier is to prevent overloading of the server, it won't exist if your server is big enough
             if os.path.getsize('static/uploads/uploaded_image.png') > 200000:
-                print(f"size: {os.path.getsize('static/uploads/uploaded_image.png')}")
                 os.remove('static/uploads/uploaded_image.png')
                 flash("Image should not exceed 200kb")
                 return redirect(url_for('index'))
@@ -138,5 +137,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
 
