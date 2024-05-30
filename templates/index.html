@@ -15,13 +15,15 @@
       <div class="text-center">
         <h1>Image Colour Palette Generator</h1>
         <h3>This site generates the 5 major colours in an image.</h3>
+        <div class="flashm">
         {% for message in get_flashed_messages()  %}
           <div class="alert alert-danger alert-dismissible fade show" role="alert">
            {{ message }}
            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
          {% endfor %}
-        <div class="to-see">Just upload an image less than 200kb, to see the top 5 major colors generated:</div>
+         </div>
+        <div class="to-see">Just upload an image less than <strong>200kb</strong>, to see the top 5 major colors generated:</div>
         <div class="form-class">
           <form method="POST" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
